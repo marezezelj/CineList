@@ -18,16 +18,35 @@ public class MovieDAOImpl implements MovieDAO {
 	private SessionFactory sessionFactory;
 	
 	@Override
-	@Transactional
 	public List<Movie> getMovies() {
 		
 		Session currentSession = sessionFactory.getCurrentSession();
 		
-		Query<Movie> theQuery = currentSession.createQuery("from Movie", Movie.class);
+		Query<Movie> theQuery = currentSession.createQuery("from Movie order by title", Movie.class);
 		
 		List<Movie> movies = theQuery.getResultList();
 		
 		return movies;
+	}
+
+	@Override
+	public void saveMovie(Movie theMovie) {
+
+		Session currentSession = sessionFactory.getCurrentSession();
+		
+		currentSession.saveOrUpdate(theMovie);
+		
+		
+	}
+
+	@Override
+	public Movie getMovie(int theId) {
+		
+		Session currentSession = sessionFactory.getCurrentSession();
+		
+		Movie theMovie=currentSession.get(Movie.class, theId);
+		
+		return theMovie;
 	}
 
 }
