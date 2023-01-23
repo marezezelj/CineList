@@ -59,4 +59,12 @@ public class MovieController {
 	
 		return "movie-form";
 	}
+	
+	@GetMapping("/delete")
+	public String delete(@RequestParam("movieId") int theId) {
+		
+		movieService.markAsRead(theId);
+		
+		return "redirect:/movie/list";
+	}
 }

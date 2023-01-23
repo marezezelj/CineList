@@ -42,6 +42,10 @@
 					<c:url var="updateLink" value="/movie/showFormForUpdate">
 						<c:param name="movieId" value="${tempMovie.id}"/>
 					</c:url>
+					
+					<c:url var="deleteLink" value="/movie/delete">
+						<c:param name="movieId" value="${tempMovie.id}"/>
+					</c:url>
 				
 					<tr>
 						<td>${tempMovie.title}</td>
@@ -50,6 +54,10 @@
 						<td>${tempMovie.type}</td>
 						<td>
 							<a href="${updateLink}">Update</a>
+							|
+							<a href="${deleteLink}"
+							onclick="if(!(confirm('Are you sure you want to mark this as watched?'))) return false">Mark as Watched</a>
+							
 						</td>
 					</tr>
 				

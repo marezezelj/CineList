@@ -49,4 +49,13 @@ public class MovieDAOImpl implements MovieDAO {
 		return theMovie;
 	}
 
+	@Override
+	public void markAsWatch(int theId) {
+		Session currentSession = sessionFactory.getCurrentSession();
+		
+		Query query = currentSession.createQuery("delete from Movie where id=:kljuc");
+		query.setParameter("kljuc", theId);
+		query.executeUpdate();
+	}
+
 }

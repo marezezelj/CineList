@@ -34,4 +34,11 @@ public class MovieServiceImpl implements MovieService {
 		return movieDAO.getMovie(theId);
 	}
 
+	@Override
+	@Transactional
+	public void markAsRead(int theId) {
+		movieDAO.markAsWatch(theId);
+		
+	}
+
 }
