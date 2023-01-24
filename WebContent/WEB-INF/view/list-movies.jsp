@@ -1,5 +1,13 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+
+<c:url var="sortDirectorLink" value="/movie/list">
+	<c:param name="sort" value="director"></c:param>
+</c:url>
+
+<c:url var="sortTitleLink" value="/movie/list">
+	<c:param name="sort" value="title"></c:param>
+</c:url>
 <!DOCTYPE html>
 
 <html>
@@ -11,6 +19,7 @@
 			rel="stylesheet"
 			href="${pageContext.request.contextPath}/resources/css/style.css" />			
 </head>
+
 
 
 <body>
@@ -32,12 +41,16 @@
 			<form:form action="search" method="GET">
 				Search Titles: <input type="text" name="searchedMovie"/>
 				<input type="submit" value="Search" class="add-button">
+				
+				<input type="radio" id="All" name="filter" value="All" checked> <label for="All">All Types</label>
+				<input type="radio" id="Movies" name="filter" value="Movie" > <label for="Movies">Movies</label>
+				<input type="radio" id="TV" name="filter" value="TV Show" > <label for="TV">TV Shows</label>
 			</form:form>
 		
 			<table>
 				<tr>
-					<th>Title</th>
-					<th>Director</th>
+					<th><a href="${sortTitleLink}">Title</a></th>
+					<th><a href="${sortDirectorLink}">Director</a></th>
 					<th>Genre</th>
 					<th>Type</th>	
 					<th>Actions</th>

@@ -6,7 +6,7 @@ import com.dolphweb.cinelist.entity.Movie;
 
 public interface MovieService {
 
-	public List<Movie> getMovies();
+	public List<Movie> getMovies(String sort);
 
 	public void saveMovie(Movie theMovie);
 
@@ -15,4 +15,6 @@ public interface MovieService {
 	public void markAsRead(int theId);
 
 	public List<Movie> search(String theSearch);
+
+	public List<Movie> searchWithFilter(String theSearch, String type);
 }

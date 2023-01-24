@@ -17,8 +17,8 @@ public class MovieServiceImpl implements MovieService {
 
 	@Override
 	@Transactional
-	public List<Movie> getMovies() {
-		return movieDAO.getMovies();
+	public List<Movie> getMovies(String sort) {
+		return movieDAO.getMovies(sort);
 	}
 
 	@Override
@@ -45,6 +45,12 @@ public class MovieServiceImpl implements MovieService {
 	@Transactional
 	public List<Movie> search(String theSearch) {
 		return movieDAO.search(theSearch);
+	}
+
+	@Override
+	@Transactional
+	public List<Movie> searchWithFilter(String theSearch, String type) {
+		return movieDAO.searchWithFilter(theSearch, type);
 	}
 
 }

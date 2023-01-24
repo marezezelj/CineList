@@ -18,11 +18,20 @@ public class MovieDAOImpl implements MovieDAO {
 	private SessionFactory sessionFactory;
 	
 	@Override
-	public List<Movie> getMovies() {
+	public List<Movie> getMovies(String sort) {
 		
 		Session currentSession = sessionFactory.getCurrentSession();
+		String query;
 		
-		Query<Movie> theQuery = currentSession.createQuery("from Movie order by title", Movie.class);
+		if(sort!=null) {
+			query = "from Movie order by " + sort;
+		} else {
+			query = "from Movie order by title";
+		}
+		
+		
+		
+		Query<Movie> theQuery = currentSession.createQuery(query, Movie.class);
 		
 		List<Movie> movies = theQuery.getResultList();
 		
@@ -70,6 +79,23 @@ public class MovieDAOImpl implements MovieDAO {
 			theQuery = currentSession.createQuery("from Movie");
 		}
 		
+		List<Movie> lista=theQuery.getResultList();
+		
+		return lista;
+	}
+
+	@Override
+	public List<Movie> searchWithFilter(String theSearch, String type) {
+		Session currentSession = sessionFactory.getCurrentSession();
+		Query theQuery = null;
+		
+		if(theSearch!=null && theSearch.trim().length()>0) {
+			theQuery = currentSession.createQuery("from Movie where lower(title) like:naziv and type like:tip");
+			theQuery.setParameter("naziv", "%" +theSearch.toLowerCase()+ "%").setParameter("tip", type);
+		} else {
+			theQuery = currentSession.createQuery("from Movie where type like:tip");
+			theQuery.setParameter("tip", type);
+		}
 		List<Movie> lista=theQuery.getResultList();
 		
 		return lista;

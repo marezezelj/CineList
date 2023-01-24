@@ -23,9 +23,15 @@ public class MovieController {
 	private MovieService movieService;
 
 	@GetMapping("/list")
-	public String listMovies(Model theModel) {
+	public String listMovies(@RequestParam(required=false) String sort, Model theModel) {
 		
-		List<Movie> movies=movieService.getMovies();
+		List<Movie> movies=null;
+		
+		if(sort!=null) {
+			movies=movieService.getMovies(sort);
+		} else {
+			movies=movieService.getMovies("title");
+		}
 		
 		theModel.addAttribute("movies", movies);
 		
@@ -69,11 +75,15 @@ public class MovieController {
 	}
 	
 	@GetMapping("/search")
-	public String searchMovies(@RequestParam("searchedMovie") String theSearch, Model theModel) {
+	public String searchMovies(@RequestParam("searchedMovie") String theSearch, @RequestParam("filter") String type, Model theModel) {
 		
-		List<Movie> listaFilmova = movieService.search(theSearch);
-		
-		theModel.addAttribute("movies",listaFilmova);
+		if(type.equals("All")) {
+			List<Movie> listaFilmova = movieService.search(theSearch);
+			theModel.addAttribute("movies",listaFilmova);
+		} else {
+			List<Movie> listaFilmova = movieService.searchWithFilter(theSearch, type);
+			theModel.addAttribute("movies",listaFilmova);
+		}
 		
 		return "list-movies";
 	}
