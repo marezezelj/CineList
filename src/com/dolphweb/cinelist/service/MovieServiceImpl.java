@@ -41,4 +41,10 @@ public class MovieServiceImpl implements MovieService {
 		
 	}
 
+	@Override
+	@Transactional
+	public List<Movie> search(String theSearch) {
+		return movieDAO.search(theSearch);
+	}
+
 }

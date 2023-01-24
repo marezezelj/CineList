@@ -3,7 +3,7 @@
 <html>
 
 <head>
-	<title>Add Movie</title>
+	<title>CineList - Add Title</title>
 	
 	<link type="text/css"
 		rel="stylesheet"
@@ -62,7 +62,7 @@
 			
 			<div style="clear; both;"></div>
 			<p>
-				<a href="${pageContext.request.contextPath}">Back to Watchlist</a>
+				<a href="${pageContext.request.contextPath}/movie/list">Back to Watchlist</a>
 			</p>
 			
 		</div>

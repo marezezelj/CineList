@@ -67,4 +67,14 @@ public class MovieController {
 		
 		return "redirect:/movie/list";
 	}
+	
+	@GetMapping("/search")
+	public String searchMovies(@RequestParam("searchedMovie") String theSearch, Model theModel) {
+		
+		List<Movie> listaFilmova = movieService.search(theSearch);
+		
+		theModel.addAttribute("movies",listaFilmova);
+		
+		return "list-movies";
+	}
 }

@@ -13,4 +13,6 @@ public interface MovieService {
 	public Movie getMovie(int theId);
 
 	public void markAsRead(int theId);
+
+	public List<Movie> search(String theSearch);
 }

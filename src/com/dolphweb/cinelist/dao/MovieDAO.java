@@ -13,4 +13,6 @@ public interface MovieDAO {
 	public Movie getMovie(int theId);
 
 	public void markAsWatch(int theId);
+
+	public List<Movie> search(String theSearch);
 }

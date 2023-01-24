@@ -58,4 +58,21 @@ public class MovieDAOImpl implements MovieDAO {
 		query.executeUpdate();
 	}
 
+	@Override
+	public List<Movie> search(String theSearch) {
+		Session currentSession = sessionFactory.getCurrentSession();
+		Query theQuery=null;
+		
+		if(theSearch!=null && theSearch.trim().length()>0) {
+			theQuery = currentSession.createQuery("from Movie where lower(title) like :naziv");
+			theQuery.setParameter("naziv", "%" + theSearch.toLowerCase() + "%");
+		} else {
+			theQuery = currentSession.createQuery("from Movie");
+		}
+		
+		List<Movie> lista=theQuery.getResultList();
+		
+		return lista;
+	}
+
 }
