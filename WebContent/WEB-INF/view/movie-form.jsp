@@ -45,7 +45,10 @@
 						</tr>
 						<tr>
 							<td><label>Type(Movie/TV Show):</label></td>
-							<td><form:input path="type"/></td>
+							<td><form:select path="type">
+								<form:option value="Movie" label="Movie"/>  
+        						<form:option value="TV Show" label="TV Show"/>
+        					</form:select></td>  
 						</tr>
 						
 						<tr>

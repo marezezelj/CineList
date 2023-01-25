@@ -77,7 +77,7 @@
 							<a href="${deleteLink}"
 							onclick="if(!(confirm('Are you sure you want to mark this as watched?'))) return false">Mark as Watched</a>
 							|
-							<a>IMDb</a>
+							<a>More</a>
 						</td>
 					</tr>
 				
