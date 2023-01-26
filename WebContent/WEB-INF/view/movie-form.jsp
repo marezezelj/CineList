@@ -44,6 +44,10 @@
 							<td><form:input path="genre"/></td>
 						</tr>
 						<tr>
+							<td><label>Movie ID:</label></td>
+							<td><form:input path="tmdbId"/></td>
+						</tr>
+						<tr>
 							<td><label>Type(Movie/TV Show):</label></td>
 							<td><form:select path="type">
 								<form:option value="Movie" label="Movie"/>  

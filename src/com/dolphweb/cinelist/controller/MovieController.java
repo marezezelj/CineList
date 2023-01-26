@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.dolphweb.cinelist.api.TmbdApi;
 import com.dolphweb.cinelist.dao.MovieDAO;
 import com.dolphweb.cinelist.entity.Movie;
 import com.dolphweb.cinelist.service.MovieService;
@@ -86,5 +87,19 @@ public class MovieController {
 		}
 		
 		return "list-movies";
+	}
+	
+	@GetMapping("/info")
+	public String showInfo(@RequestParam("tmdbID") String tmdbId, Model theModel) {
+		
+		TmbdApi tmdb = new TmbdApi(tmdbId);
+		theModel.addAttribute("poster",tmdb.getPoster());
+		theModel.addAttribute("title", tmdb.getTitle());
+		theModel.addAttribute("desc", tmdb.getDescription());
+		theModel.addAttribute("runtime", tmdb.getRuntime());
+		theModel.addAttribute("rating", tmdb.getRatings());
+		theModel.addAttribute("imdb", tmdb.getIMDB());
+		
+		return "movie-info";
 	}
 }

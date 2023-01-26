@@ -28,6 +28,9 @@ public class Movie {
 	@Column(name="type")
 	private String type;
 	
+	@Column(name="tmdb_id")
+	private String tmdbId;
+	
 	public Movie() {
 		
 	}
@@ -76,6 +79,14 @@ public class Movie {
 	public String toString() {
 		return "Movie [id=" + id + ", title=" + title + ", director=" + director + ", genre=" + genre + ", type=" + type
 				+ "]";
+	}
+
+	public String getTmdbId() {
+		return tmdbId;
+	}
+
+	public void setTmdbId(String tmdbId) {
+		this.tmdbId = tmdbId;
 	}
 	
 	
