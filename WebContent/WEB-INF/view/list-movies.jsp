@@ -68,6 +68,7 @@
 					
 					<c:url var="moreLink" value="/movie/info">
 						<c:param name="tmdbID" value="${tempMovie.tmdbId}"/>
+						<c:param name="type" value="${tempMovie.type}"/>
 					</c:url>
 				
 					<tr>
