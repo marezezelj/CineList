@@ -23,6 +23,8 @@
 	<h3>Choose option:</h3>
 
 	<a href="/CineList/movie/list">Show Watchlist</a>
+	<br><br>
+	<a>Show Ratings</a>
 
 </body>
 

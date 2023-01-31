@@ -26,6 +26,9 @@
 	<h3>${rating}</h3>
 	
 	<p>${desc}</p>
+	
+	<button class="rate" onclick="openForm()">Rate</button>
+	
 	<a href="${imdb}" target="_blank">IMDb</a>
 	
 	<div style="clear; both;"></div>
