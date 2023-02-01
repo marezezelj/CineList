@@ -15,6 +15,7 @@ import com.dolphweb.cinelist.api.SeriesApi;
 import com.dolphweb.cinelist.api.TmbdApi;
 import com.dolphweb.cinelist.dao.MovieDAO;
 import com.dolphweb.cinelist.entity.Movie;
+import com.dolphweb.cinelist.entity.MovieRating;
 import com.dolphweb.cinelist.service.MovieService;
 
 @Controller
@@ -40,6 +41,16 @@ public class MovieController {
 		return "list-movies";
 	}
 	
+	@GetMapping("/ratings")
+	public String listRatings(Model theModel) {
+		
+		List<MovieRating> ratings = movieService.getRatings();
+		
+		theModel.addAttribute("ratings",ratings);
+		
+		return "list-ratings";
+	}
+	
 	@GetMapping("/showFormForAdd")
 	public String showFormForAdd(Model theModel) {
 		
@@ -58,6 +69,15 @@ public class MovieController {
 		return "redirect:/movie/list";
 	}
 	
+	@PostMapping("/saveRating")
+	public String saveRating(@ModelAttribute("movieRating") MovieRating theMovieRating) {
+		
+		movieService.saveRating(theMovieRating);
+		
+		return "redirect:/movie/ratings";
+		
+	}
+	
 	@GetMapping("/showFormForUpdate")
 	public String showFormForUpdate(@RequestParam("movieId") int theId, Model theModel) {
 		
@@ -69,11 +89,16 @@ public class MovieController {
 	}
 	
 	@GetMapping("/delete")
-	public String delete(@RequestParam("movieId") int theId) {
+	public String delete(@RequestParam("movieId") int theId, @RequestParam("movieTitle") String title, Model theModel) {
+		
+		MovieRating theMovieRating = new MovieRating();
+		theModel.addAttribute("movieRating",theMovieRating);
+		
+		theModel.addAttribute("rateTitle",title);
 		
 		movieService.markAsRead(theId);
 		
-		return "redirect:/movie/list";
+		return "rate-movie";
 	}
 	
 	@GetMapping("/search")

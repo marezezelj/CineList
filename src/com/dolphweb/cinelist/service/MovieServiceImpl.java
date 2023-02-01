@@ -7,13 +7,17 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.dolphweb.cinelist.dao.MovieDAO;
+import com.dolphweb.cinelist.dao.MovieRatingDAO;
 import com.dolphweb.cinelist.entity.Movie;
+import com.dolphweb.cinelist.entity.MovieRating;
 
 @Service
 public class MovieServiceImpl implements MovieService {
 	
 	@Autowired
 	private MovieDAO movieDAO;
+	@Autowired
+	private MovieRatingDAO movieRatingDAO;
 
 	@Override
 	@Transactional
@@ -51,6 +55,18 @@ public class MovieServiceImpl implements MovieService {
 	@Transactional
 	public List<Movie> searchWithFilter(String theSearch, String type) {
 		return movieDAO.searchWithFilter(theSearch, type);
+	}
+	
+	@Override
+	@Transactional
+	public List<MovieRating> getRatings(){
+		return movieRatingDAO.getRatings();
+	}
+
+	@Override
+	@Transactional
+	public void saveRating(MovieRating theMovieRating) {
+		movieRatingDAO.saveMovie(theMovieRating);
 	}
 
 }

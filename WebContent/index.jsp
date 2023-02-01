@@ -24,7 +24,7 @@
 
 	<a href="/CineList/movie/list">Show Watchlist</a>
 	<br><br>
-	<a>Show Ratings</a>
+	<a href="/CineList/movie/ratings">Show Ratings</a>
 
 </body>
 

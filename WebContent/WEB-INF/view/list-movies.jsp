@@ -64,6 +64,7 @@
 					
 					<c:url var="deleteLink" value="/movie/delete">
 						<c:param name="movieId" value="${tempMovie.id}"/>
+						<c:param name="movieTitle" value ="${tempMovie.title}"/>
 					</c:url>
 					
 					<c:url var="moreLink" value="/movie/info">
