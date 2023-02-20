@@ -1,6 +1,8 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
+<!-- Generisanje linkova sa parametrima na osnovu kojih ce se vrsiti sortiranje -->
+
 <c:url var="sortDirectorLink" value="/movie/list">
 	<c:param name="sort" value="director"></c:param>
 </c:url>
@@ -8,6 +10,8 @@
 <c:url var="sortTitleLink" value="/movie/list">
 	<c:param name="sort" value="title"></c:param>
 </c:url>
+
+
 <!DOCTYPE html>
 
 <html>

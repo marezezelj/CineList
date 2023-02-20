@@ -2,6 +2,7 @@ package com.dolphweb.cinelist.dao;
 
 import java.util.List;
 
+
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
@@ -10,6 +11,8 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.dolphweb.cinelist.entity.Movie;
+
+// repository za upravljanje sa Watchlist bazom
 
 @Repository
 public class MovieDAOImpl implements MovieDAO {
@@ -28,8 +31,6 @@ public class MovieDAOImpl implements MovieDAO {
 		} else {
 			query = "from Movie order by title";
 		}
-		
-		
 		
 		Query<Movie> theQuery = currentSession.createQuery(query, Movie.class);
 		
@@ -67,6 +68,8 @@ public class MovieDAOImpl implements MovieDAO {
 		query.executeUpdate();
 	}
 
+	// pretraga po naslovu
+	
 	@Override
 	public List<Movie> search(String theSearch) {
 		Session currentSession = sessionFactory.getCurrentSession();
@@ -83,6 +86,8 @@ public class MovieDAOImpl implements MovieDAO {
 		
 		return lista;
 	}
+	
+	// pretraga po naslovu i tipu objekta (film/serija) u bazi
 
 	@Override
 	public List<Movie> searchWithFilter(String theSearch, String type) {

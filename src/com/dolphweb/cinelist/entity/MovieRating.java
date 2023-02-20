@@ -7,6 +7,11 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+/* 
+ * Entitet filma za opciju rejtovanja naslova, sadrži atribute za mapiranje sa db putem Hibernate-a
+ * Atributi za id, naslov, ocenu
+ */
+
 @Entity
 @Table(name="ratings")
 public class MovieRating {

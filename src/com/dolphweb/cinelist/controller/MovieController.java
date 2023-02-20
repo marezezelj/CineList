@@ -25,6 +25,8 @@ public class MovieController {
 	@Autowired
 	private MovieService movieService;
 
+	// izlistavanje naslova, podrazumevano po nazivu naslova, uz opciono sortiranje po nazivu rezisera
+	
 	@GetMapping("/list")
 	public String listMovies(@RequestParam(required=false) String sort, Model theModel) {
 		
@@ -41,6 +43,8 @@ public class MovieController {
 		return "list-movies";
 	}
 	
+	// izlistavanje baze ocena
+	
 	@GetMapping("/ratings")
 	public String listRatings(Model theModel) {
 		
@@ -50,6 +54,8 @@ public class MovieController {
 		
 		return "list-ratings";
 	}
+	
+	// prompt za dodavanje novih naslova
 	
 	@GetMapping("/showFormForAdd")
 	public String showFormForAdd(Model theModel) {
@@ -77,6 +83,8 @@ public class MovieController {
 		return "redirect:/movie/ratings";
 		
 	}
+	
+	// prompt za azuriranje watchliste
 	
 	@GetMapping("/showFormForUpdate")
 	public String showFormForUpdate(@RequestParam("movieId") int theId, Model theModel) {
@@ -114,6 +122,8 @@ public class MovieController {
 		
 		return "list-movies";
 	}
+	
+	// detail page sa pozivom TMDb API-a i prikupljanjem informacija o filmu (poster, originalni naziv, opis, trajanje, prosecna ocena, IMDb link)
 	
 	@GetMapping("/info")
 	public String showInfo(@RequestParam("tmdbID") String tmdbId, @RequestParam("type") String type, Model theModel) {

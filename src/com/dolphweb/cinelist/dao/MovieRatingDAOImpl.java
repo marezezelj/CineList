@@ -11,6 +11,8 @@ import org.springframework.stereotype.Repository;
 import com.dolphweb.cinelist.entity.Movie;
 import com.dolphweb.cinelist.entity.MovieRating;
 
+//repository za komunikaciju sa bazom ocena
+
 @Repository
 public class MovieRatingDAOImpl implements MovieRatingDAO {
 	

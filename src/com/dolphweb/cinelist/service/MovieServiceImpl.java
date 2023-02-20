@@ -11,6 +11,8 @@ import com.dolphweb.cinelist.dao.MovieRatingDAO;
 import com.dolphweb.cinelist.entity.Movie;
 import com.dolphweb.cinelist.entity.MovieRating;
 
+//implementacija service interfejsa 
+
 @Service
 public class MovieServiceImpl implements MovieService {
 	

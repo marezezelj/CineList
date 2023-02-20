@@ -7,6 +7,11 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+/* 
+ * Entitet filma, sadrži atribute za mapiranje sa db putem Hibernate-a
+ * Atributi za id, naslov, rezisera, zanr, tip i tmdb id za uspostavu API poziva
+ */
+
 @Entity
 @Table(name="movie")
 public class Movie {
